@@ -1,0 +1,1 @@
+"""Adaptador web Django."""
