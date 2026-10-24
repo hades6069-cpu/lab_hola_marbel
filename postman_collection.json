@@ -1,0 +1,52 @@
+{
+  "info": {
+    "_postman_id": "a88b7921-512f-4b15-a891-00f551aeb2c4",
+    "name": "Hola Marbel",
+    "description": "Prueba la pagina de saludo Django en el servidor local.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Obtener saludo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        },
+        "description": "La respuesta es HTML. En Postman Web usa Desktop Agent para acceder al servidor local."
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('El servidor responde con HTTP 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('La pagina contiene el saludo', function () {",
+              "    pm.expect(pm.response.text()).to.include('hola marbel');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ]
+}
